@@ -1,0 +1,1 @@
+Async/await enable asynchronous, promise-based behavior to be written in a cleaner style. The async keyword is used to declare an asynchronous function that returns a promise, and the await keyword is used to pause the execution of the function until a promise is resolved or rejected. Writing Async/await provide a way to handle errors as well.
