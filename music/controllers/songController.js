@@ -13,7 +13,7 @@ const createSong = (req, res, next) => {
     ` })
 }
 
-const deleteSongs = (req, res, next) => {
+const deleteSong = (req, res, next) => {
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
@@ -22,6 +22,6 @@ const deleteSongs = (req, res, next) => {
 
 module.exports = {
     createSong, 
-    deleteSongs, 
+    deleteSong, 
     getSongs
 }

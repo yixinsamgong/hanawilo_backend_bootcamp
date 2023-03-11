@@ -3,13 +3,13 @@ const router = express.Router();
 
 const {
     createSong, 
-    deleteSongs, 
+    deleteSong, 
     getSongs
 } = require('../controllers/songController');
 
 router.route('/')
     .get(getSongs)
     .post(createSong)
-    .delete(deleteSongs)
+    .delete(deleteSong)
 
 module.exports = router;

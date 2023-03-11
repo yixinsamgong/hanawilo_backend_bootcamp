@@ -13,7 +13,7 @@ const createArtist = (req, res, next) => {
     ` })
 }
 
-const deleteArtists = (req, res, next) => {
+const deleteArtist= (req, res, next) => {
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
@@ -21,7 +21,7 @@ const deleteArtists = (req, res, next) => {
 }
 
 module.exports = {
-    deleteArtists, 
+    deleteArtist, 
     createArtist, 
     getArtists
 }

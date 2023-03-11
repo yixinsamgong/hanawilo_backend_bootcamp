@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 const {
-    deleteUsers, 
+    deleteUser, 
     getUsers, 
-    createUsers
+    createUser
 } = require('../controllers/userController');
 
 router.route('/')
     .get(getUsers)
-    .post(createUsers)
-    .delete(deleteUsers)
+    .post(createUser)
+    .delete(deleteUser)
 
 module.exports = router;

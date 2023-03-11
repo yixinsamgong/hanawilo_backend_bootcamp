@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const {
-    deleteArtists, 
+    deleteArtist, 
     createArtist, 
     getArtists
 } = require('../controllers/artistController');
@@ -10,6 +10,6 @@ const {
 router.route('/')
     .get(getArtists)
     .post(createArtist)
-    .delete(deleteArtists)
+    .delete(deleteArtist)
 
 module.exports = router;

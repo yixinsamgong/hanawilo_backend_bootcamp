@@ -5,7 +5,7 @@ const getUsers = (req, res, next) => {
     .json({ message: 'Show me all the users!' })
 }
 
-const createUsers = (req, res, next) => {
+const createUser = (req, res, next) => {
     res
     .status(201)
     .setHeader('Content-Type', 'application/json')
@@ -13,7 +13,7 @@ const createUsers = (req, res, next) => {
     ` })
 }
 
-const deleteUsers = (req, res, next) => {
+const deleteUser = (req, res, next) => {
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
@@ -23,7 +23,7 @@ const deleteUsers = (req, res, next) => {
 
 
 module.exports = {
-    deleteUsers, 
+    deleteUser, 
     getUsers, 
-    createUsers
+    createUser
 }
