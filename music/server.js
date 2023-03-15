@@ -5,6 +5,8 @@ const cors = require('cors');
 const artist = require('./routes/artist');
 const user = require('./routes/user');
 const song = require('./routes/song');
+const logger = require('./middlewares/logger');
+const errorHandler = require('./middlewares/error');
 
 dotenv.config({ path: './config/config.env' }); 
 
@@ -13,6 +15,8 @@ const app = express();
 // parse application/json
 app.use(bodyParser.json());
 
+app.use(logger)
+app.use(errorHandler)
 app.use('/song', song); 
 app.use('/user', user); 
 app.use('/artist', artist);

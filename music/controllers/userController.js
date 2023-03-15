@@ -1,4 +1,19 @@
 const getUsers = (req, res, next) => {
+     if (Object.keys(req.query).length) {
+        const {
+            userName,
+            gender
+        } = req.query
+
+        const filter = []
+
+        if (userName) filter.push(userName)
+        if (gender) filter.push(gender)
+
+        for (const query of filter){
+            console.log(`Searching user by: ${query}`)
+        }
+    }
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
