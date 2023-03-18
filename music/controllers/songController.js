@@ -45,18 +45,18 @@ const getSong = (req, res, next) => {
     .json({ message: `Show me the Song with cateogry Id of ${req.params.songId}` })
 }
 
-const putSong = (req, res, next) => {
+const updateSong = (req, res, next) => {
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
-    .json({ message: `Update the Song with cateogry Id of ${req.params.SongId}` })
+    .json({ message: `Update the Song with cateogry Id of ${req.params.songId}` })
 }
 
 const deleteSong = (req, res, next) => {
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
-    .json({ message: `Delete the Song with cateogry Id of ${req.params.SongId}` })
+    .json({ message: `Delete the Song with cateogry Id of ${req.params.songId}` })
 }
 
 module.exports = {
@@ -64,6 +64,6 @@ module.exports = {
     deleteSongs, 
     getSongs,
     getSong,
-    putSong,
+    updateSong,
     deleteSong
 }

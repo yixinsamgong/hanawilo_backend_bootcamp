@@ -14,7 +14,7 @@ const getArtists = (req, res, next) => {
         if (genre) filter.push(genre)
 
         for (const query of filter){
-            console.log(`Searching song by: ${query}`)
+            console.log(`Searching artist by: ${query}`)
         }
 
     }
@@ -32,15 +32,39 @@ const createArtist = (req, res, next) => {
     ` })
 }
 
-const deleteArtist= (req, res, next) => {
+const deleteArtists= (req, res, next) => {
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
     .json({ message: 'Deleting all the artists!' })
 }
 
+const getArtist = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Show me the artist with cateogry Id of ${req.params.artistId}` })
+}
+
+const updateArtist = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Update the artist with cateogry Id of ${req.params.artistId}` })
+}
+
+const deleteArtist = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Delete the artist with cateogry Id of ${req.params.artistId}` })
+}
+
 module.exports = {
-    deleteArtist, 
+    deleteArtists, 
     createArtist, 
-    getArtists
+    getArtists,
+    deleteArtist,
+    updateArtist,
+    getArtist
 }

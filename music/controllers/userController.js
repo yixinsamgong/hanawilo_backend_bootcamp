@@ -28,17 +28,40 @@ const createUser = (req, res, next) => {
     ` })
 }
 
-const deleteUser = (req, res, next) => {
+const deleteUsers = (req, res, next) => {
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
     .json({ message: 'Deleting all the users!' })
 }
 
+const getUser = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Show me the user with cateogry Id of ${req.params.userId}` })
+}
+
+const updateUser = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Update the user with cateogry Id of ${req.params.userId}` })
+}
+
+const deleteUser = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Delete the user with cateogry Id of ${req.params.userId}` })
+}
 
 
 module.exports = {
-    deleteUser, 
+    deleteUsers, 
     getUsers, 
-    createUser
+    createUser,
+    deleteUser,
+    updateUser,
+    getUser
 }
