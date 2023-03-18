@@ -19,5 +19,4 @@ router.route('/:userId')
     .get(getUser)
     .post(updateUser)
     .delete(deleteUser)
-
 module.exports = router;
