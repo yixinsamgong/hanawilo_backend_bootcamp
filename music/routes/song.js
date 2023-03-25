@@ -17,7 +17,7 @@ router.route('/')
 
 router.route('/:songId')
     .get(getSong)
-    .post(updateSong)
+    .put(updateSong)
     .delete(deleteSong)
 
 module.exports = router;
