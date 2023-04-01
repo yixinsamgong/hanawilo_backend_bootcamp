@@ -56,7 +56,7 @@ const deleteSongs = async (req, res, next) => {
 
 const getSong = async (req, res, next) => {
     try {
-        const song = await Sing.findById(req.params.songId)
+        const song = await Song.findById(req.params.songId)
     res
         .status(200)
         .setHeader('Content-Type', 'application/json')
@@ -90,11 +90,63 @@ const deleteSong = async(req, res, next) => {
     }
 }
 
+// For '/:songId/ratings' endpoint
+
+const getSongRatings = async (req, res, next) => {
+    try {
+        const result = await Song.findById(req.params.songId)
+
+        res
+        .status(200)
+        .setHeader('Content-Type', 'application/json')
+        .json(result.ratings)
+    } catch (err) {
+        next(err);
+    }
+}
+
+const postSongRating = async (req, res, next) => {
+    try {
+        const result = await Song.findById(req.params.songId)
+        result.ratings.push(req.body)
+
+        // saves new rating to the data base
+        await result.save()
+
+        res
+        .status(200)
+        .setHeader('Content-Type', 'application/json')
+        .json(result.ratings)
+    } catch (err) {
+        next(err);
+    }
+}
+
+const deleteSongRatings = async (req, res, next) => {
+    try {
+        const result = await Song.findById(req.params.songId);
+
+        result.ratings = [];
+
+        await result.save();
+
+        res
+        .status(200)
+        .setHeader('Content-Type', 'application/json')
+        .json(result.ratings)
+    } catch (err) {
+        next(err)
+    }
+}
+
 module.exports = {
     createSong, 
     deleteSongs, 
     getSongs,
     getSong,
     updateSong,
-    deleteSong
+    deleteSong,
+    getSongRatings,
+    deleteSongRatings,
+    postSongRating
 }
