@@ -15,7 +15,7 @@ const RatingSchema = new Schema({
     author: {
         type: Schema.Types.ObjectId, 
         ref: 'User'
-    }
+    }   
 })
 
 
@@ -34,7 +34,10 @@ const SongSchema = new Schema({
         type: String,
         unique: true,
     }, 
-    ratings: [RatingSchema]
+    ratings: [RatingSchema],
+    image: {
+        type: String
+    }
 },{
     timestamps: true
 })

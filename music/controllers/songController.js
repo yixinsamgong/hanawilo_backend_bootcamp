@@ -139,6 +139,70 @@ const deleteSongRatings = async (req, res, next) => {
     }
 }
 
+// For '/:songId/ratings/:ratingId' endpoint
+const getSongRating = async (req, res, next) => {
+    try {
+        const song = await Song.findById(req.params.songId);
+        let rating = song.ratings.find(rating => (req.params.ratingId).equals(rating._id))
+
+        if (!rating) rating = { msg: `No rating found with id: ${req.params.ratingId}` }
+
+        res
+        .status(200)
+        .setHeader('Content-Type', 'application/json')
+        .json(rating)
+    } catch (err) {
+        next(err)
+    }
+}
+
+const updateSongRating = async (req, res, next) => {
+    try {
+        const song = await Song.findById(req.params.itemId); 
+        let rating = song.ratings.find(rating => (req.params.ratingId).equals(rating._id))
+
+        if (rating) {
+            const ratingIndexPosition = song.ratings.indexOf(rating)
+            song.ratings.splice(ratingIndexPosition, 1, req.body)
+            rating = req.body
+            await song.save(); 
+        } else {
+            rating = { msg: `No rating found with id: ${req.params.ratingId}` }
+        }
+
+        res
+        .status(200)
+        .setHeader('Content-Type', 'application/json')
+        .json(rating)
+    } catch (err) {
+        next(err)
+    }
+}
+
+const deleteSongRating = async (req, res, next) => {
+    try {
+        const song = await Song.findById(req.params.songId); 
+        let rating = song.ratings.find(rating => (req.params.ratingId).equals(rating._id))
+
+        if (rating) {
+            const ratingIndexPosition = song.ratings.indexOf(rating); 
+            song.ratings.splice(ratingIndexPosition, 1)
+            rating = { msg: `Successfully deleted rating with id: ${req.params.ratingId}` }
+            await song.save(); 
+        } else {
+            rating = { msg: `No rating found with id: ${req.params.ratingId}` }
+        }
+
+        res
+        .status(200)
+        .setHeader('Content-Type', 'application/json')
+        .json(rating)
+    } catch (err) {
+        next(err)
+    }
+}
+
+
 module.exports = {
     createSong, 
     deleteSongs, 
@@ -148,5 +212,8 @@ module.exports = {
     deleteSong,
     getSongRatings,
     deleteSongRatings,
-    postSongRating
+    postSongRating,
+    getSongRating,
+    updateSongRating,
+    deleteSongRating
 }
