@@ -108,18 +108,17 @@ const postArtistImage = async (req, res, next) => {
         if(!file.mimetype.startsWith('image')) throw new Error('Please upload an image file type!');
         if (file.size > process.env.MAX_FILE_SIZE) throw new Error(`Image exceeds size of ${process.env.MAX_FILE_SIZE}`);
 
-        file.name = `photo_${req.params.itemId}${path.parse(file.name).ext}`; 
+        file.name = `photo_${req.params.artistId}${path.parse(file.name).ext}`;
         const filePath = process.env.FILE_UPLOAD_PATH + file.name;
-        file.mv((filePath), async(err)=>{
-            if(err) throw new Error ('Problem uploading photo');
-            await Item.findByIdAndUpdate(req.params.itemId, { image: file.name })
 
+         file.mv((filePath), async (err) => {
+            if (err) throw new Error('Problem uploading photo');
+            await Artist.findByIdAndUpdate(req.params.artistId, { image: file.name})
              res
             .status(200)
             .setHeader('Content-Type', 'application/json')
             .json({ msg: 'Image uploaded!' })
-
-        })
+    })
 }
 
 

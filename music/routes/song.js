@@ -34,6 +34,6 @@ router.route('/:songId/ratings')
 router.route('/:songId/ratings/:ratingId')
       .get(getSongRating)
       .put(updateSongRating)
-      .delete(deleteSongRating2)
+      .delete(deleteSongRating)
 
-module.exports = router;2
+module.exports = router;

@@ -34,10 +34,7 @@ const SongSchema = new Schema({
         type: String,
         unique: true,
     }, 
-    ratings: [RatingSchema],
-    image: {
-        type: String
-    }
+    ratings: [RatingSchema]
 },{
     timestamps: true
 })
